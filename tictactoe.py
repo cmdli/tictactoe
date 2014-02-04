@@ -144,8 +144,10 @@ def play():
         turn = other(turn)
     if goal(board,player):
         print "You won!"
-    else:
+    elif goal(board,other(player)):
         print "The computer is unfair! You lose."
+    else:
+        print "TIE!"
 
 if __name__ == "__main__":
     play()
