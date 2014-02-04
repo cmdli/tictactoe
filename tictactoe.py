@@ -129,9 +129,12 @@ def play():
             while True:
                 try:
                     move = map(int,move_text)
-                    if move[0] in [0,1,2] and move[1] in [0,1,2]:
+                    x = move[0]
+                    y = move[1]
+                    if x in [0,1,2] and y in [0,1,2] and board[x+y*3] == EMPTY:
                         break
                 except ValueError:
+                    print "Input error."
                     print "Please format the input like 'X Y'!"
             board[move[0] + move[1]*3] = player
         else:
@@ -142,6 +145,7 @@ def play():
             print "Placing on (%d,%d)..." % (x,y)
             board[move] = other(player)
         turn = other(turn)
+    print_board(board)
     if goal(board,player):
         print "You won!"
     elif goal(board,other(player)):
